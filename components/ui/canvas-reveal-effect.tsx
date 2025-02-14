@@ -1,10 +1,17 @@
 "use client";
 
+import dynamic from 'next/dynamic'
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 import { cn } from "@/lib/utils";
+
+// Dynamically import the Canvas component with no SSR
+const CanvasComponent = dynamic(
+  () => import('@react-three/fiber').then((mod) => mod.Canvas),
+  { ssr: false }
+);
 
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
@@ -26,8 +33,10 @@ export const CanvasRevealEffect = ({
   showGradient?: boolean;
 }) => {
   return (
-    <div className={cn("relative h-full w-full bg-white", containerClassName)}>
-      <div className="h-full w-full">
+    <div className={cn("h-full w-full", containerClassName)}>
+      <CanvasComponent
+        className="absolute inset-0 h-full w-full"
+      >
         <DotMatrix
           colors={colors ?? [[0, 255, 255]]}
           dotSize={dotSize ?? 3}
@@ -42,7 +51,7 @@ export const CanvasRevealEffect = ({
             `}
           center={["x", "y"]}
         />
-      </div>
+      </CanvasComponent>
       {showGradient && (
         <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-[84%]" />
       )}
@@ -294,9 +303,9 @@ const ShaderMaterial = ({
 
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
   return (
-    <Canvas className="absolute inset-0  h-full w-full">
+    <CanvasComponent className="absolute inset-0  h-full w-full">
       <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
-    </Canvas>
+    </CanvasComponent>
   );
 };
 interface ShaderProps {

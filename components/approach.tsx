@@ -1,10 +1,16 @@
 "use client";
 
+import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { MagicButton } from "@/components/ui/magic-button";
+
+// Dynamically import CanvasRevealEffect
+const CanvasRevealEffect = dynamic(
+  () => import('@/components/ui/canvas-reveal-effect').then(mod => mod.CanvasRevealEffect),
+  { ssr: false }
+);
 
 export const Approach = () => {
   return (
