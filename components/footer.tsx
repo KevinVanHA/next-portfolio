@@ -54,7 +54,7 @@ export const Footer = () => {
             rel="noreferrer noopener"
             className="text-purple"
           >
-            Sanidhya
+            Kevin
           </Link>{" "}
           |{" "}
           <Link href={links.sourceCode} className="underline">

@@ -14,7 +14,7 @@ export const RecentProjects = () => {
         <span className="text-purple">recent projects</span>
       </h1>
 
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-x-24 gap-y-8 p-4">
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-x-24 gap-y-40 p-4">
         {projects.map(
           ({ id, des, iconLists, img, link, sourceCode, title }) => (
             <div

@@ -206,17 +206,17 @@ export const socialMedia = [
   {
     name: "GitHub",
     img: "/git.svg",
-    link: "https://github.com/sanidhyy",
+    link: "https://github.com/KevinVanHA",
   },
   {
-    name: "Twitter",
+    name: "X",
     img: "/twit.svg",
-    link: "https://twitter.com/TechnicalShubam",
+    link: "https://x.com/KevinVanHaesen1",
   },
   {
     name: "LinkedIn",
     img: "/link.svg",
-    link: "https://www.linkedin.com/in/sanidhyy",
+    link: "https://www.linkedin.com/in/kevin-van-haesendonck-82a6a7202/",
   },
 ] as const;
 
