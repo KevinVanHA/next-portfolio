@@ -1,32 +1,19 @@
-import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import type { PropsWithChildren } from "react";
-
+import { Metadata } from "next";
 import { siteConfig } from "@/config";
-
-import { ThemeProvider } from "./provider";
-
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const viewport: Viewport = {
-  themeColor: "#000319",
-  colorScheme: "dark",
-};
 
 export const metadata: Metadata = siteConfig;
 
-const RootLayout = ({ children }: Readonly<PropsWithChildren>) => {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
-          {children}
-        </ThemeProvider>
+      <body>
+        {children}
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
